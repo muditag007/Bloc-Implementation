@@ -6,8 +6,10 @@ class UserModel {
   final String email;
   final String photoUrl;
   final String idPhotoUrl;
+  final bool verified;
 
   UserModel({
+    required this.verified,
     required this.firstName,
     required this.lastName,
     required this.phoneNumber,

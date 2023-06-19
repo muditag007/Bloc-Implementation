@@ -165,6 +165,7 @@ class _RegisterState extends State<Register> {
                               email: widget.user!.email.toString(),
                               idPhotoUrl: '',
                               photoUrl: '',
+                              verified: false,
                             ),
                           ),
                         );
