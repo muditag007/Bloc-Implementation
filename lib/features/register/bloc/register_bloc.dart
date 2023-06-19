@@ -33,7 +33,8 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       'regNo': event.userDetails.regNo,
       'phoneNumber': event.userDetails.phoneNumber,
       'email': event.userDetails.email,
-      'verified':event.userDetails.verified,
+      'verified': event.userDetails.verified,
+      'userType': 'student',
     });
     emit(RegisterDoneState());
     await Future.delayed(Duration(seconds: 2));

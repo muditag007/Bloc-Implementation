@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_const_declarations, unnecessary_cast, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, unused_local_variable, prefer_const_declarations, unnecessary_cast, prefer_const_literals_to_create_immutables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
