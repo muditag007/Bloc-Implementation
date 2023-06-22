@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:test_app/features/confirmation/ui/confirmation.dart';
 import 'package:test_app/features/travel_summary/bloc/travel_summary_bloc.dart';
 
 import '../../home/ui/home.dart';
@@ -52,7 +53,7 @@ class _TravelSummaryState extends State<TravelSummary> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => TravelSummary(
+                builder: (context) => Confirmation(
                   user: widget.user,
                 ),
               ),
