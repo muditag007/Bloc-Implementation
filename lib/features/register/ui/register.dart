@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:test_app/features/home/ui/home.dart';
 import 'package:test_app/features/register/bloc/register_bloc.dart';
 import 'package:test_app/features/register/models/user_model.dart';
+import 'package:test_app/features/travel_summary/ui/travel_summary.dart';
 
 class Register extends StatefulWidget {
   const Register({super.key, required this.user});

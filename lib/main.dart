@@ -2,7 +2,9 @@
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
 import 'package:test_app/features/sign_in/ui/sign_in.dart';
+import 'package:test_app/test.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

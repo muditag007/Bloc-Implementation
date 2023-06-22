@@ -37,7 +37,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
       'userType': 'VIT',
     });
     emit(RegisterDoneState());
-    await Future.delayed(Duration(seconds: 2));
+    // await Future.delayed(Duration(seconds: 2));
     emit(RegisterNavigateHomeState(user: event.user));
   }
 }
