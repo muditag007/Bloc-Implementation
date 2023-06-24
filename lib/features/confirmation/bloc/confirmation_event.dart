@@ -3,11 +3,19 @@ part of 'confirmation_bloc.dart';
 abstract class ConfirmationEvent {}
 
 class ConfirmationInitialEvent extends ConfirmationEvent {
-  final User? user;
+  final String? email;
 
-  ConfirmationInitialEvent({required this.user});
+  ConfirmationInitialEvent({required this.email});
 }
 
-class ConfirmationPaymentEvent extends ConfirmationEvent {}
+class ConfirmationConfirmPaymentEvent extends ConfirmationEvent {
+  final String? email;
 
-class ConfirmationCancelPaymentEvent extends ConfirmationEvent {}
+  ConfirmationConfirmPaymentEvent({required this.email});
+}
+
+class ConfirmationCancelPaymentEvent extends ConfirmationEvent {
+  final String? email;
+
+  ConfirmationCancelPaymentEvent({required this.email});
+}

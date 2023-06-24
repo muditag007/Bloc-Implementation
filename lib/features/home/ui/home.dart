@@ -7,8 +7,8 @@ import 'package:test_app/features/home/bloc/home_bloc.dart';
 import 'package:test_app/features/travel_summary/ui/travel_summary.dart';
 
 class Home extends StatefulWidget {
-  final User? user;
-  const Home({super.key, required this.user});
+  final String? email;
+  const Home({super.key, required this.email});
 
   @override
   State<Home> createState() => _HomeState();
@@ -39,7 +39,7 @@ class _HomeState extends State<Home> {
             context,
             MaterialPageRoute(
               builder: (context) => TravelSummary(
-                user: successState.user,
+                email: successState.email,
               ),
             ),
           );
@@ -60,7 +60,7 @@ class _HomeState extends State<Home> {
                     if (snapshot.hasData) {
                       print(snapshot.data['confirm']);
                       if (snapshot.data['confirm']) {
-                        homeBloc.add(HomeAcceptedEvent(user: widget.user));
+                        homeBloc.add(HomeAcceptedEvent(email: widget.email));
                         return SizedBox();
                       }
                       return Center(
@@ -310,7 +310,7 @@ class _HomeState extends State<Home> {
                                     end: selectedEnd.toString(),
                                     passengers: int.parse(
                                         selectedPassengers.toString()),
-                                    user: widget.user,
+                                    email: widget.email,
                                   ),
                                 );
                               },

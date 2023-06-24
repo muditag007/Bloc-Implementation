@@ -39,7 +39,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(HomeTryingState());
     final FirebaseFirestore _firestore = FirebaseFirestore.instance;
     var newDoc = await _firestore.collection('confirm_requests').add({
-      'vit_email': event.user!.email,
+      'vit_email': event.email,
       'auto_email': null,
       'otp': null,
       'start': event.start,
@@ -56,6 +56,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   FutureOr<void> homeAcceptedEvent(
       HomeAcceptedEvent event, Emitter<HomeState> emit) {
-    emit(HomeNavigateSummary(user: event.user));
+    emit(HomeNavigateSummary(email: event.email));
   }
 }

@@ -9,8 +9,8 @@ import 'package:test_app/features/travel_summary/bloc/travel_summary_bloc.dart';
 import '../../home/ui/home.dart';
 
 class TravelSummary extends StatefulWidget {
-  const TravelSummary({super.key, required this.user});
-  final User? user;
+  const TravelSummary({super.key, required this.email});
+  final String? email;
 
   @override
   State<TravelSummary> createState() => _TravelSummaryState();
@@ -21,7 +21,7 @@ class _TravelSummaryState extends State<TravelSummary> {
 
   @override
   void initState() {
-    travelSummaryBloc.add(TravelSummaryInitialEvent(user: widget.user));
+    travelSummaryBloc.add(TravelSummaryInitialEvent(email: widget.email));
     super.initState();
   }
 
@@ -54,16 +54,16 @@ class _TravelSummaryState extends State<TravelSummary> {
               context,
               MaterialPageRoute(
                 builder: (context) => Confirmation(
-                  user: widget.user,
+                  email: widget.email,
                 ),
               ),
             );
-          }else if(state is TravelSummaryCancelState){
+          } else if (state is TravelSummaryCancelState) {
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) => Home(
-                  user: widget.user,
+                  email: widget.email,
                 ),
               ),
             );
@@ -91,10 +91,11 @@ class _TravelSummaryState extends State<TravelSummary> {
                     Text(successState.total.toString()),
                     SizedBox(
                       height: 50,
-                    ),ElevatedButton(
+                    ),
+                    ElevatedButton(
                       onPressed: () {
-                        travelSummaryBloc
-                            .add(TravelSummaryConfirmClickedEvent(docId: successState.docId));
+                        travelSummaryBloc.add(TravelSummaryConfirmClickedEvent(
+                            docId: successState.docId));
                       },
                       child: Center(
                         child: Text("Confirm"),
@@ -102,8 +103,8 @@ class _TravelSummaryState extends State<TravelSummary> {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        travelSummaryBloc
-                            .add(TravelSummaryCancelClickedEvent(docId:successState.docId));
+                        travelSummaryBloc.add(TravelSummaryCancelClickedEvent(
+                            docId: successState.docId));
                       },
                       child: Center(
                         child: Text("Cancel"),

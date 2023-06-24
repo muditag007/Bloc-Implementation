@@ -3,9 +3,9 @@ part of 'travel_summary_bloc.dart';
 abstract class TravelSummaryEvent {}
 
 class TravelSummaryInitialEvent extends TravelSummaryEvent {
-  final User? user;
+  final String? email;
 
-  TravelSummaryInitialEvent({required this.user});
+  TravelSummaryInitialEvent({required this.email});
 }
 
 class TravelSummaryCancelClickedEvent extends TravelSummaryEvent {

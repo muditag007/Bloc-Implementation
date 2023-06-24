@@ -33,11 +33,13 @@ class _SignInState extends State<SignIn> {
         if (state is SignInNavigateHomeState) {
           final successState = state as SignInNavigateHomeState;
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Register(
-                        user: successState.user,
-                      )));
+            context,
+            MaterialPageRoute(
+              builder: (context) => Register(
+                email: successState.email,
+              ),
+            ),
+          );
         }
       },
       builder: (context, state) {
@@ -51,6 +53,105 @@ class _SignInState extends State<SignIn> {
           case SignInSuccessState:
             return Scaffold(
               backgroundColor: ImageConstants.primaryColor,
+              // body: Container(
+              //   height: MediaQuery.of(context).size.height,
+              //   width: MediaQuery.of(context).size.width,
+              //   padding: EdgeInsets.symmetric(vertical: 24),
+              //   child: Column(
+              //     children: [
+              //       Expanded(
+              //         child: Column(
+              //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //           children: [
+              //             Text(
+              //               "Welcome Back,\n Login Now.",
+              //               style: TextStyle(
+              //                   fontSize: 30, fontWeight: FontWeight.w600),
+              //             ),
+              //             Container(
+              //               height: 80,
+              //               width: 80,
+              //               decoration: BoxDecoration(
+              //                   borderRadius: BorderRadius.circular(100),
+              //                   color: Colors.white,
+              //                   image: DecorationImage(
+              //                       image: AssetImage(
+              //                           ImageConstants.destination))),
+              //             ),
+              //             Padding(
+              //               padding: const EdgeInsets.all(16.0),
+              //               child: Column(
+              //                 children: [
+              //                   Row(
+              //                     children: [
+              //                       Text(
+              //                         "Elevate Your \nPassenger \nExperience, from \nStart to Finish",
+              //                         style: TextStyle(
+              //                             fontSize: 40,
+              //                             fontWeight: FontWeight.bold,
+              //                             color: Colors.white),
+              //                         textAlign: TextAlign.left,
+              //                       ),
+              //                     ],
+              //                   ),
+              //                   SizedBox(
+              //                     height: 16,
+              //                   ),
+              //                   Row(
+              //                     children: [
+              //                       Text(
+              //                         "Gear Up for Smoother rides \nand Smarter Routes..",
+              //                         style: TextStyle(
+              //                           fontSize: 20,
+              //                           fontWeight: FontWeight.bold,
+              //                         ),
+              //                         textAlign: TextAlign.left,
+              //                       ),
+              //                     ],
+              //                   ),
+              //                 ],
+              //               ),
+              //             ),
+              //           ],
+              //         ),
+              //       ),
+              //       Container(
+              //         padding: EdgeInsets.all(8),
+              //         child: ElevatedButton(
+              //           style: ElevatedButton.styleFrom(
+              //             backgroundColor: Colors.white,
+              //           ),
+              //           onPressed: () {
+              //             signInBloc.add(SignInClickedEvent());
+              //           },
+              //           child: Padding(
+              //             padding: const EdgeInsets.all(8.0),
+              //             child: Row(
+              //               mainAxisAlignment: MainAxisAlignment.start,
+              //               children: [
+              //                 Container(
+              //                   width: 50,
+              //                   height: 50,
+              //                   decoration: BoxDecoration(
+              //                       borderRadius: BorderRadius.circular(80),
+              //                       image: DecorationImage(
+              //                           image: AssetImage(
+              //                         ImageConstants.googleLogo,
+              //                       ))),
+              //                 ),
+              //                 Expanded(
+              //                   child: Center(
+              //                     child: Text("Login with Google"),
+              //                   ),
+              //                 ),
+              //               ],
+              //             ),
+              //           ),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ),
               body: Center(
                 child: Container(
                   height: MediaQuery.of(context).size.height,

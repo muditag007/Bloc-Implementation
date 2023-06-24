@@ -27,3 +27,15 @@ class ConfirmationInitialState extends ConfirmationState {}
 class ConfirmationNavigatePaymentGatewayState extends ConfirmationActionState {}
 
 class ConfirmationCancelPaymentState extends ConfirmationActionState {}
+
+class ConfirmationPaymentSuccess extends ConfirmationState {
+  final PaymentSuccessResponse response;
+
+  ConfirmationPaymentSuccess({required this.response});
+}
+
+class ConfirmationPaymentFailed extends ConfirmationState {
+  final PaymentFailureResponse response;
+
+  ConfirmationPaymentFailed({required this.response});
+}

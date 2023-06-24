@@ -6,6 +6,7 @@ import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:meta/meta.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 part 'sign_in_event.dart';
 part 'sign_in_state.dart';
@@ -35,7 +36,10 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
     // print(_user!.email);
     // print(_user!.displayName);
     // emit(SignInNavigateHomeState());
-    emit(SignInNavigateHomeState(user: _user));
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    _prefs.setString("email", _user!.email.toString());
+    _prefs.setString("userType", "Student");
+    emit(SignInNavigateHomeState(email: _user.email));
   }
 
   FutureOr<void> signInInitialEvent(

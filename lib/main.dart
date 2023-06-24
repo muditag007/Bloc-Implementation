@@ -1,15 +1,27 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_local_variable
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_place_picker_mb/google_maps_place_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:test_app/features/home/ui/home.dart';
 import 'package:test_app/features/sign_in/ui/sign_in.dart';
 import 'package:test_app/test.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(App());
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? email = prefs.getString("email");
+  String? userType = prefs.getString("userType");
+  print("hello");
+  print(email);
+  print(userType);
+
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: email == null ? SignIn() : Home(email: email),
+  ));
 }
 
 class App extends StatelessWidget {

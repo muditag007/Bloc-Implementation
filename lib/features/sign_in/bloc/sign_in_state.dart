@@ -16,6 +16,6 @@ class SignInFailedState extends SignInState {}
 class SignInLoadingState extends SignInState {}
 
 class SignInNavigateHomeState extends SignInActionState {
-  final User? user;
-  SignInNavigateHomeState({required this.user});
+  final String? email;
+  SignInNavigateHomeState({required this.email});
 }

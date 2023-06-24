@@ -10,8 +10,8 @@ import 'package:test_app/features/register/models/user_model.dart';
 import 'package:test_app/features/travel_summary/ui/travel_summary.dart';
 
 class Register extends StatefulWidget {
-  const Register({super.key, required this.user});
-  final User? user;
+  const Register({super.key, required this.email});
+  final String? email;
 
   @override
   State<Register> createState() => _RegisterState();
@@ -41,11 +41,13 @@ class _RegisterState extends State<Register> {
         if (state is RegisterNavigateHomeState) {
           final successState = state as RegisterNavigateHomeState;
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Home(
-                        user: successState.user,
-                      )));
+            context,
+            MaterialPageRoute(
+              builder: (context) => Home(
+                email: successState.email,
+              ),
+            ),
+          );
         } else if (state is RegisterDoneState) {
           ScaffoldMessenger.of(context)
               .showSnackBar(SnackBar(content: Text('User Registered')));
@@ -157,13 +159,13 @@ class _RegisterState extends State<Register> {
                       onPressed: () {
                         registerBloc.add(
                           RegisterClickedEvent(
-                            user: widget.user,
+                            email: widget.email,
                             userDetails: UserModel(
                               firstName: fName.text,
                               lastName: lName.text,
                               phoneNumber: phoneNo.text,
                               regNo: regNo.text,
-                              email: widget.user!.email.toString(),
+                              email: widget.email.toString(),
                               idPhotoUrl: '',
                               photoUrl: '',
                               verified: false,

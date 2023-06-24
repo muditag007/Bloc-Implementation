@@ -15,7 +15,7 @@ class RegisterDoneState extends RegisterActionState {}
 class RegisterTryingState extends RegisterState {}
 
 class RegisterNavigateHomeState extends RegisterActionState {
-  final User? user;
+  final String? email;
 
-  RegisterNavigateHomeState({required this.user});
+  RegisterNavigateHomeState({required this.email});
 }

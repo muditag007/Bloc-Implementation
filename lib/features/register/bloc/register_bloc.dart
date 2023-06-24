@@ -38,6 +38,6 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     });
     emit(RegisterDoneState());
     // await Future.delayed(Duration(seconds: 2));
-    emit(RegisterNavigateHomeState(user: event.user));
+    emit(RegisterNavigateHomeState(email: event.email));
   }
 }

@@ -30,7 +30,7 @@ class TravelSummaryBloc extends Bloc<TravelSummaryEvent, TravelSummaryState> {
     print(allData);
     for (int i = 0; i < allData.length; i++) {
       Map temp = (allData[i]) as Map<String, dynamic>;
-      if (temp['vit_email'] == event.user!.email) {
+      if (temp['vit_email'] == event.email) {
         double serCharge = (temp['fare'] + temp['fare']) * 0.03;
         double total = temp['fare'] + temp['fare'] + serCharge;
         emit(

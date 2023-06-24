@@ -33,7 +33,7 @@ class HomeWaitingConfirmationState extends HomeActionState {
 }
 
 class HomeNavigateSummary extends HomeActionState {
-  final User? user;
+  final String? email;
 
-  HomeNavigateSummary({required this.user});
+  HomeNavigateSummary({required this.email});
 }

@@ -9,10 +9,10 @@ class HomeClickedEvent extends HomeEvent {
   final String start;
   final String end;
   final int passengers;
-  final User? user;
+  final String? email;
 
   HomeClickedEvent(
-      {required this.user,
+      {required this.email,
       required this.start,
       required this.end,
       required this.passengers});
@@ -21,9 +21,9 @@ class HomeClickedEvent extends HomeEvent {
 
 
 class HomeAcceptedEvent extends HomeEvent {
-  final User? user;
+  final String? email;
 
-  HomeAcceptedEvent({required this.user});
+  HomeAcceptedEvent({required this.email});
 
 
 }

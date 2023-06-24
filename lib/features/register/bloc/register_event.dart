@@ -6,7 +6,7 @@ class RegisterInitialEvent extends RegisterEvent {}
 
 class RegisterClickedEvent extends RegisterEvent {
   final UserModel userDetails;
-  final User? user;
+  final String? email;
 
-  RegisterClickedEvent({required this.user, required this.userDetails});
+  RegisterClickedEvent({required this.email, required this.userDetails});
 }
