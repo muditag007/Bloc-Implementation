@@ -1,4 +1,4 @@
-// ignore_for_file: no_leading_underscores_for_local_identifiers, unused_local_variable, avoid_print
+// ignore_for_file: no_leading_underscores_for_local_identifiers, unused_local_variable, avoid_print, depend_on_referenced_packages, unused_import
 
 import 'dart:async';
 

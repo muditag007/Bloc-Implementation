@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, unused_local_variable
+// ignore_for_file: prefer_const_constructors, unused_local_variable, unused_import, avoid_print
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -18,10 +18,14 @@ void main() async {
   print(email);
   print(userType);
 
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: email == null ? SignIn() : Home(email: email),
-  ));
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(),
+      color: Colors.white,
+      home: email == null ? SignIn() : Home(email: email),
+    ),
+  );
 }
 
 class App extends StatelessWidget {
