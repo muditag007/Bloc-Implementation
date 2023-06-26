@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:test_app/constants.dart';
 import 'package:test_app/features/home/ui/home.dart';
 import 'package:test_app/features/register/ui/register.dart';
@@ -51,217 +52,158 @@ class _SignInState extends State<SignIn> {
               ),
             );
           case SignInSuccessState:
+            double height = (MediaQuery.of(context).size.height -
+                    MediaQuery.of(context).padding.top) /
+                844;
+            double width = MediaQuery.of(context).size.width / 390;
             return Scaffold(
-              backgroundColor: ImageConstants.primaryColor,
-              // body: Container(
-              //   height: MediaQuery.of(context).size.height,
-              //   width: MediaQuery.of(context).size.width,
-              //   padding: EdgeInsets.symmetric(vertical: 24),
-              //   child: Column(
-              //     children: [
-              //       Expanded(
-              //         child: Column(
-              //           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //           children: [
-              //             Text(
-              //               "Welcome Back,\n Login Now.",
-              //               style: TextStyle(
-              //                   fontSize: 30, fontWeight: FontWeight.w600),
-              //             ),
-              //             Container(
-              //               height: 80,
-              //               width: 80,
-              //               decoration: BoxDecoration(
-              //                   borderRadius: BorderRadius.circular(100),
-              //                   color: Colors.white,
-              //                   image: DecorationImage(
-              //                       image: AssetImage(
-              //                           ImageConstants.destination))),
-              //             ),
-              //             Padding(
-              //               padding: const EdgeInsets.all(16.0),
-              //               child: Column(
-              //                 children: [
-              //                   Row(
-              //                     children: [
-              //                       Text(
-              //                         "Elevate Your \nPassenger \nExperience, from \nStart to Finish",
-              //                         style: TextStyle(
-              //                             fontSize: 40,
-              //                             fontWeight: FontWeight.bold,
-              //                             color: Colors.white),
-              //                         textAlign: TextAlign.left,
-              //                       ),
-              //                     ],
-              //                   ),
-              //                   SizedBox(
-              //                     height: 16,
-              //                   ),
-              //                   Row(
-              //                     children: [
-              //                       Text(
-              //                         "Gear Up for Smoother rides \nand Smarter Routes..",
-              //                         style: TextStyle(
-              //                           fontSize: 20,
-              //                           fontWeight: FontWeight.bold,
-              //                         ),
-              //                         textAlign: TextAlign.left,
-              //                       ),
-              //                     ],
-              //                   ),
-              //                 ],
-              //               ),
-              //             ),
-              //           ],
-              //         ),
-              //       ),
-              //       Container(
-              //         padding: EdgeInsets.all(8),
-              //         child: ElevatedButton(
-              //           style: ElevatedButton.styleFrom(
-              //             backgroundColor: Colors.white,
-              //           ),
-              //           onPressed: () {
-              //             signInBloc.add(SignInClickedEvent());
-              //           },
-              //           child: Padding(
-              //             padding: const EdgeInsets.all(8.0),
-              //             child: Row(
-              //               mainAxisAlignment: MainAxisAlignment.start,
-              //               children: [
-              //                 Container(
-              //                   width: 50,
-              //                   height: 50,
-              //                   decoration: BoxDecoration(
-              //                       borderRadius: BorderRadius.circular(80),
-              //                       image: DecorationImage(
-              //                           image: AssetImage(
-              //                         ImageConstants.googleLogo,
-              //                       ))),
-              //                 ),
-              //                 Expanded(
-              //                   child: Center(
-              //                     child: Text("Login with Google"),
-              //                   ),
-              //                 ),
-              //               ],
-              //             ),
-              //           ),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              body: Center(
-                child: Container(
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
-                  padding: EdgeInsets.symmetric(vertical: 24),
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              "Welcome Back,\n Login Now.",
-                              style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.w600,
-                                color: Colors.white,
-                              ),
-                            ),
-                            Container(
-                              height: 80,
-                              width: 80,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(100),
-                                color: Colors.white,
-                                image: DecorationImage(
-                                  image: AssetImage(ImageConstants.destination),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.all(16.0),
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "Elevate Your \nPassenger \nExperience, from \nStart to Finish",
-                                        style: TextStyle(
-                                            fontSize: 40,
-                                            fontWeight: FontWeight.bold,
-                                            color: Colors.white),
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    height: 16,
-                                  ),
-                                  Row(
-                                    children: [
-                                      Text(
-                                        "Gear Up for Smoother rides \nand Smarter Routes..",
-                                        style: TextStyle(
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold,
-                                        ),
-                                        textAlign: TextAlign.left,
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+              backgroundColor: kYellow,
+              body: Padding(
+                padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).padding.top,
+                  left: 40 * width,
+                  right: 40 * width,
+                  bottom: 94 * height,
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 143 * height,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Welcome Back,",
+                        style: GoogleFonts.poppins(
+                          fontSize: 24,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
                         ),
                       ),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.white,
+                    ),
+                    Align(
+                      alignment: Alignment.center,
+                      child: Text(
+                        "Login Now.",
+                        style: GoogleFonts.poppins(
+                          fontSize: 24,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 30 * height,
+                    ),
+                    Container(
+                      height: 63 * height,
+                      width: 63 * height,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(100),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Color(0x3F000000),
+                            blurRadius: 10,
+                            offset: Offset(0, 4),
+                            spreadRadius: 0,
                           ),
-                          onPressed: () {
-                            signInBloc.add(SignInClickedEvent());
-                          },
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Container(
-                                  width: 50,
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(80),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                        ImageConstants.googleLogo,
-                                      ),
+                        ],
+                      ),
+                      child: Center(
+                        child: Icon(Icons.arrow_back),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 53 * height,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Elevate Your\nPassenger\nExperience, from\nStart to Finish",
+                        style: GoogleFonts.poppins(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 14 * height,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Gear Up for Smoother Rides\nand Smarter Routes...",
+                        style: GoogleFonts.poppins(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Expanded(child: Container()),
+                    InkWell(
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {
+                        signInBloc.add(SignInClickedEvent());
+                      },
+                      child: Container(
+                        height: 64 * height,
+                        width: 303 * width,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(100),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10 * width,
+                          ),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 48 * height,
+                                width: 48 * height,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(100),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0x3F000000),
+                                      blurRadius: 10,
+                                      offset: Offset(0, 4),
+                                      spreadRadius: 0,
                                     ),
+                                  ],
+                                ),
+                                child: Center(
+                                  child: Image.asset(
+                                    "assets/images/google.png",
+                                    height: 25 * height,
+                                    width: 25 * height,
                                   ),
                                 ),
-                                Expanded(
-                                  child: Center(
-                                    child: Text(
-                                      "Login with Google",
-                                      style: TextStyle(
-                                        color: ImageConstants.black,
-                                      ),
-                                    ),
-                                  ),
+                              ),
+                              SizedBox(
+                                width: 37 * width,
+                              ),
+                              Text(
+                                "Login With Google",
+                                style: GoogleFonts.poppins(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black,
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             );

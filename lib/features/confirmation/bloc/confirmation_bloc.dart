@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:otp/otp.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,7 +22,9 @@ class ConfirmationBloc extends Bloc<ConfirmationEvent, ConfirmationState> {
       ConfirmationInitialEvent event, Emitter<ConfirmationState> emit) async {
     emit(ConfirmationInitialState());
     String autoEmail = '';
-    int otp = 111111;
+
+    int otp = 0;
+    // print(code2);
     String autoName = '';
     String autoNumber = '';
     String phoneNumber = '';
@@ -57,12 +60,15 @@ class ConfirmationBloc extends Bloc<ConfirmationEvent, ConfirmationState> {
         break;
       }
     }
-    emit(ConfirmationSuccessState(
+    emit(
+      ConfirmationSuccessState(
         autoName: autoName,
         autoNum: autoNumber,
         autoPhone: phoneNumber,
         autoPhoto: photoUrl,
-        otp: otp));
+        otp: otp,
+      ),
+    );
   }
 
   // void handlePaymentErrorResponse(PaymentFailureResponse response) {

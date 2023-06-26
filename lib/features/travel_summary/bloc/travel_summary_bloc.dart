@@ -4,9 +4,9 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:otp/otp.dart';
 
 part 'travel_summary_event.dart';
 part 'travel_summary_state.dart';
@@ -55,8 +55,13 @@ class TravelSummaryBloc extends Bloc<TravelSummaryEvent, TravelSummaryState> {
       Emitter<TravelSummaryState> emit) async {
     emit(TravelSummaryLoadingState());
     final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+    final code = OTP.generateTOTPCodeString(
+      'JBSWY3DPEHPK3PXP',
+      DateTime.now().millisecondsSinceEpoch,
+      interval: 10,
+    );
     await _firestore.collection('confirm_requests').doc(event.docId).update({
-      'otp': 123456,
+      'otp': int.parse(code),
     });
     emit(TravelSummaryConfirmState());
   }

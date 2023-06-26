@@ -3,6 +3,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:test_app/constants.dart';
 import 'package:test_app/features/home/bloc/home_bloc.dart';
 import 'package:test_app/features/travel_summary/ui/travel_summary.dart';
 
@@ -94,248 +96,314 @@ class _HomeState extends State<Home> {
           case HomeSuccessState:
             final successStateValues = state as HomeSuccessState;
             final List<dynamic> places = successStateValues.places;
-            return SafeArea(
-              child: Scaffold(
-                backgroundColor: Colors.white,
-                body: LayoutBuilder(
-                  builder: (BuildContext context, BoxConstraints constraints) {
-                    return Container(
-                      width: constraints
-                          .maxWidth, // Use the maximum available width
-                      height: constraints
-                          .maxHeight, // Use the maximum available height
-                      color: Colors.white,
-                      child: Column(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(left: 37, top: 60),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                'Hi !',
-                                style: const TextStyle(
-                                    fontSize: 32, fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              left: 37,
-                            ),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                'Welcome !',
-                                style: const TextStyle(
-                                    fontSize: 32, fontWeight: FontWeight.w400),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(height: 78),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                              left: 37,
-                            ),
-                            child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                'Where would you like to  go today?',
-                                style: const TextStyle(
-                                    fontSize: 18, fontWeight: FontWeight.w600),
-                              ),
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 30,
-                          ),
-                          Container(
-                            height: 300,
-                            width: 350,
-                            decoration: BoxDecoration(
-                                color: const Color(0xFFF6F6F6),
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const SizedBox(
-                                  height: 5,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10, right: 10),
-                                  child: DropdownButtonFormField<String>(
-                                      value: selectedStart,
-                                      icon: Image.asset(
-                                          'assets/images/dropdown.png'),
-                                      decoration: InputDecoration(
-                                        prefixIcon: Image.asset(
-                                            'assets/images/Oval.png'), // Icon on the left
-                                        hintText:
-                                            'Choose your Pick up point', // Hint text in the center
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 10, horizontal: 16),
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(30)),
-                                        //suffixIcon: Icon(Icons.arrow_drop_down), // Dropdown icon on the right
-                                      ),
-                                      onChanged: (String? newValue) {
-                                        setState(() {
-                                          selectedStart =
-                                              newValue; // Update the selected option
-                                        });
-                                      },
-                                      items: <String>[
-                                        // 'Option 1',
-                                        // 'Option 2',
-                                        // 'Option 3',
-                                        ...places
-                                      ].map<DropdownMenuItem<String>>(
-                                          (String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(value),
-                                        );
-                                      }).toList()),
-                                ),
-                                const Divider(
-                                  // Add a horizontal line
-                                  color: Colors.grey,
-                                  thickness: 1,
-                                  indent: 20,
-                                  endIndent: 20,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10, right: 10),
-                                  child: DropdownButtonFormField<String>(
-                                      value: selectedEnd,
-                                      icon: Image.asset(
-                                          'assets/images/dropdown.png'),
-                                      decoration: InputDecoration(
-                                        prefixIcon: Image.asset(
-                                            'assets/images/flag.png'), // Icon on the left
-                                        hintText:
-                                            'Choose your drop point', // Hint text in the center
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 10, horizontal: 16),
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(30)),
-                                        //suffixIcon: Icon(Icons.arrow_drop_down), // Dropdown icon on the right
-                                      ),
-                                      onChanged: (String? newValue) {
-                                        setState(() {
-                                          selectedEnd =
-                                              newValue; // Update the selected option
-                                        });
-                                      },
-                                      items: <String>[
-                                        ...places,
-                                      ].map<DropdownMenuItem<String>>(
-                                          (String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(value),
-                                        );
-                                      }).toList()),
-                                ),
-                                const Divider(
-                                  // Add a horizontal line
-                                  color: Colors.grey,
-                                  thickness: 1,
-                                  indent: 20,
-                                  endIndent: 20,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 10, right: 10),
-                                  child: DropdownButtonFormField<String>(
-                                      value: selectedPassengers,
-                                      icon: Image.asset(
-                                          'assets/images/dropdown.png'),
-                                      decoration: InputDecoration(
-                                        prefixIcon: Image.asset(
-                                            'assets/images/passenger.png'), // Icon on the left
-                                        hintText:
-                                            'Number of Passengers', // Hint text in the center
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                                vertical: 10, horizontal: 16),
-                                        border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(30)),
-                                        //suffixIcon: Icon(Icons.arrow_drop_down), // Dropdown icon on the right
-                                      ),
-                                      onChanged: (String? newValue) {
-                                        setState(() {
-                                          selectedPassengers =
-                                              newValue; // Update the selected option
-                                        });
-                                      },
-                                      items: <String>[
-                                        '1',
-                                        '2',
-                                        '3',
-                                        '4',
-                                        '5',
-                                      ].map<DropdownMenuItem<String>>(
-                                          (String value) {
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(value),
-                                        );
-                                      }).toList()),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                )
-                              ],
-                            ),
-                          ),
-                          Expanded(child: Container()),
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: ElevatedButton(
-                              onPressed: () {
-                                print(selectedPassengers);
-                                homeBloc.add(
-                                  HomeClickedEvent(
-                                    start: selectedStart.toString(),
-                                    end: selectedEnd.toString(),
-                                    passengers: int.parse(
-                                        selectedPassengers.toString()),
-                                    email: widget.email,
-                                  ),
-                                );
-                              },
-                              child: Text("Book Now"),
-                            ),
-                          ),
-
-                          // InkWell(
-                          //   onTap: () {},
-                          //   child: Container(
-                          //     padding: const EdgeInsets.only(top: 10, bottom: 10),
-                          //     margin: const EdgeInsets.only(left: 30, right: 30),
-                          //     decoration: BoxDecoration(color: Colors.amber, borderRadius: BorderRadius.circular(30)),
-                          //     child: Center(
-                          //       child: Text(
-                          //         "Book Now",
-                          //         style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                          //       ),
-                          //     ),
-                          //   ),
-                          // ),
-                        ],
+            double height = (MediaQuery.of(context).size.height -
+                    MediaQuery.of(context).padding.top) /
+                844;
+            double width = MediaQuery.of(context).size.width / 390;
+            return Scaffold(
+              body: Padding(
+                padding: EdgeInsets.only(
+                  top: MediaQuery.of(context).padding.top,
+                  left: 37 * width,
+                  right: 37 * width,
+                  bottom: 33 * height,
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 51 * height,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        "Hi !\nWelcome !",
+                        style: GoogleFonts.poppins(
+                          fontSize: 32,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
-                    );
-                  },
+                    ),
+                    SizedBox(
+                      height: 78 * height,
+                    ),
+                    Text(
+                      "Where would you like to go today?",
+                      style: GoogleFonts.poppins(
+                        fontSize: 18,
+                        fontWeight: FontWeight.w600,
+                        color: kBlackText,
+                      ),
+                    ),
+                    SizedBox(
+                      height: 36 * height,
+                    ),
+                    Container(
+                      width: 350 * width,
+                      decoration: BoxDecoration(
+                        color: kGrey,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 24 * width,
+                          vertical: 23 * height,
+                        ),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 48 * height,
+                              width: 303 * width,
+                              child: DropdownButtonFormField<String>(
+                                value: selectedStart,
+                                icon: Image.asset('assets/images/dropdown.png'),
+                                decoration: InputDecoration(
+                                  prefixIcon: Image.asset(
+                                    'assets/images/Oval.png',
+                                  ),
+                                  hintText: 'Choose your pick up point',
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 10,
+                                    horizontal: 16,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                  disabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                ),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedStart = newValue;
+                                  });
+                                },
+                                items: <String>[
+                                  // 'Option 1',
+                                  // 'Option 2',
+                                  // 'Option 3',
+                                  ...places,
+                                ].map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  },
+                                ).toList(),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 18 * height,
+                            ),
+                            Divider(
+                              color: kDivider,
+                            ),
+                            SizedBox(
+                              height: 18 * height,
+                            ),
+                            Container(
+                              height: 48 * height,
+                              width: 303 * width,
+                              child: DropdownButtonFormField<String>(
+                                value: selectedEnd,
+                                icon: Image.asset('assets/images/dropdown.png'),
+                                decoration: InputDecoration(
+                                  prefixIcon: Image.asset(
+                                    'assets/images/flag.png',
+                                  ),
+                                  hintText: 'Choose your drop point',
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 10,
+                                    horizontal: 16,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                  disabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                ),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedEnd = newValue;
+                                  });
+                                },
+                                items: <String>[
+                                  // 'Option 1',
+                                  // 'Option 2',
+                                  // 'Option 3',
+                                  ...places,
+                                ].map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  },
+                                ).toList(),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 18 * height,
+                            ),
+                            Divider(
+                              color: kDivider,
+                            ),
+                            SizedBox(
+                              height: 18 * height,
+                            ),
+                            Container(
+                              height: 48 * height,
+                              width: 303 * width,
+                              child: DropdownButtonFormField<String>(
+                                value: selectedPassengers,
+                                icon: Image.asset('assets/images/dropdown.png'),
+                                decoration: InputDecoration(
+                                  prefixIcon: Image.asset(
+                                    'assets/images/passenger.png',
+                                  ),
+                                  hintText: 'Number of passengers',
+                                  contentPadding: const EdgeInsets.symmetric(
+                                    vertical: 10,
+                                    horizontal: 16,
+                                  ),
+                                  enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                  focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                  disabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(30),
+                                    borderSide: BorderSide(
+                                      width: 2,
+                                      color: Color.fromRGBO(237, 237, 237, 1),
+                                    ),
+                                  ),
+                                ),
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedPassengers = newValue;
+                                  });
+                                },
+                                items: <String>[
+                                  '1',
+                                  '2',
+                                  '3',
+                                  '4',
+                                  '5',
+                                  '6',
+                                ].map<DropdownMenuItem<String>>(
+                                  (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  },
+                                ).toList(),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(child: Container()),
+                    InkWell(
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () {
+                        homeBloc.add(
+                          HomeClickedEvent(
+                            email: widget.email,
+                            start: selectedStart.toString(),
+                            end: selectedEnd.toString(),
+                            passengers: int.parse(
+                              selectedPassengers.toString(),
+                            ),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        width: 303 * width,
+                        height: 48 * height,
+                        decoration: BoxDecoration(
+                          color: kYellow,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Book now ",
+                            style: GoogleFonts.poppins(
+                              fontSize: 16,
+                              color: kBlackText,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             );
